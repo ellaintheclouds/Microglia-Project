@@ -1,6 +1,5 @@
 # 0 Set up ---------------------------------------------------------------------
-#setwd("C:/Users/El Richardson/OneDrive - Lancaster University/Biomedicine/Year 3
-#      /387 Project/Lab work/Project Working Directory")
+setwd("C:/Users/El Richardson/OneDrive - Lancaster University/Biomedicine/Year 3/387 Project/Lab work/Project Working Directory")
 
 # Install packages
 if (!require("car", quietly = TRUE)){install.packages("car")}
@@ -21,7 +20,6 @@ library(ggsignif) # draws asterisks on ggplot plots to indicate significance
 
 # 1 Data processing ------------------------------------------------------------
 source("data processing function.R")
-process_data("Input/microglia_data.csv")
 
 
 # 2 Statistics -----------------------------------------------------------------

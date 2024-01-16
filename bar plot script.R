@@ -11,8 +11,6 @@ grob1a <- (# Diet (cortex)
     geom_point(data = data[data$region == "ctx",], 
                aes(x = diet, y = percent_area_adjusted)) +
     geom_errorbar(aes(ymin = mean-se, ymax = mean + se, width = 0.1)) +
-    geom_signif(comparisons = list(c("C/C", "HF/C")), 
-                annotation = "*") + 
     scale_y_continuous(expand = expansion(mult = c(0, 0.05))) +
     ggtitle("Cortex") +
     xlab("Paternal Diet") + ylab("Mean Microglia Coverage (%)") +
@@ -46,8 +44,6 @@ grob2a <- (# Sex (cortex)
     geom_point(data = data[data$region == "ctx",], 
                aes(x = sex, y = percent_area_adjusted)) +
     geom_errorbar(aes(ymin = mean-se, ymax = mean + se, width = 0.1)) +
-    geom_signif(comparisons = list(c("male", "female")), 
-                annotation = "*") + 
     scale_y_continuous(expand = expansion(mult = c(0, 0.05))) +
     ggtitle("Cortex") +
     xlab("Sex") + ylab("Mean Microglia Coverage (%)") +
@@ -64,8 +60,6 @@ grob2b <- (# Sex (striatum)
     geom_point(data = data[data$region == "cpu",], 
                aes(x = sex, y = percent_area_adjusted)) +
     geom_errorbar(aes(ymin = mean-se, ymax = mean + se, width = 0.1)) +
-    geom_signif(comparisons = list(c("male", "female")), 
-                annotation = "*") + 
     scale_y_continuous(expand = expansion(mult = c(0, 0.05))) +
     ggtitle("Striatum") +
     xlab("Sex") + ylab("Mean Microglia Coverage (%)") +
@@ -108,8 +102,6 @@ grob3a <- (# Diet and sex (cortex) grouped by diet
                   position=position_dodge(.5)) +
     guides(fill=guide_legend(title="Offspring Sex")) +
     scale_fill_manual(values = c("#61B499", "#8E61B4")) + 
-    geom_signif(stat = "identity", aes(x = 0.8, xend = 1.2, y = 10, yend = 10, 
-                                       annotation = "*")) + 
     scale_y_continuous(expand = expansion(mult = c(0, 0.05))) +
     ggtitle("Cortex") +
     xlab("Paternal Diet") + ylab("Mean Microglia Coverage (%)") +
@@ -155,8 +147,6 @@ grob3c <- (# Diet and sex (striatum) grouped by diet
                   position=position_dodge(.5)) +
     guides(fill=guide_legend(title="Offspring Sex")) +
     scale_fill_manual(values = c("#61B499", "#8E61B4")) + 
-    geom_signif(stat = "identity", aes(x = 0.8, xend = 1.2, y = 14, yend = 14, 
-                                       annotation = "*")) + 
     scale_y_continuous(expand = expansion(mult = c(0, 0.05))) +
     ggtitle("Striatum") +
     xlab("Paternal Diet") + ylab("Mean Microglia Coverage (%)") +
