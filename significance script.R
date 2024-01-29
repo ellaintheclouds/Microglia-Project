@@ -180,4 +180,21 @@ pairwise.wilcox.test(data$percent_area_adjusted,
                      data$sex_region_diet, paired = FALSE,
                      p.adj = "bonferroni", alternative = "two.sided", 
                      exact = FALSE)
+#femalecpuC/C femalecpuHF/C femalectxC/C femalectxHF/C malecpuC/C
+#femalecpuHF/C 1            -             -            -             -         
+#femalectxC/C  1            1             -            -             -         
+#femalectxHF/C 1            1             1            -             -         
+#malecpuC/C    1            1             1            1             -         
+#malecpuHF/C   1            1             1            1             1         
+#malectxC/C    1            1             1            1             1         
+#malectxHF/C   1            1             1            1             1         
+
+#malecpuHF/C malectxC/C
+#femalecpuHF/C -           -         
+#femalectxC/C  -           -         
+#femalectxHF/C -           -         
+#malecpuC/C    -           -         
+#malecpuHF/C   -           -         
+#malectxC/C    1           -         
+#malectxHF/C   1           1  
 # Nothing was significant likely due to correction of many groups

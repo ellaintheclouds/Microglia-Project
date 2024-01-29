@@ -27,8 +27,7 @@ grob1b <- (# Diet (striatum)
     geom_point(data = data[data$region == "cpu",], 
                aes(x = diet, y = percent_area_adjusted)) +
     geom_errorbar(aes(ymin = mean-se, ymax = mean + se, width = 0.1)) +
-    scale_y_continuous(#breaks = c(2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24),
-      expand = expansion(mult = c(0, 0.05))) +
+    scale_y_continuous(expand = expansion(mult = c(0, 0.05))) +
     ggtitle("Striatum") +
     xlab("Paternal Diet") + ylab("Mean Microglia Coverage (%)") +
     scale_x_discrete(labels=c("Control", "High-Fat")) + 
@@ -226,3 +225,37 @@ grob4b <- (# Diet and region grouped by region
 ggsave(grob4b, filename = 
            "Output/Graphs/twoway comparison/diet and region grouped by region.png",
          width = 5, height = 5.5)
+
+# Three-way comparison ---------------------------------------------------------
+stats_df_threeway <- stats_df[11:18,]
+stats_df_threeway$diet <- c("C/C", "C/C", "HF/C", "HF/C", 
+                            "C/C", "C/C", "HF/C", "HF/C")
+stats_df_threeway$sex <- c("male", "female", "male", "female", 
+                            "male", "female", "male", "female")
+stats_df_threeway$region <- c("ctx", "ctx", "ctx", "ctx", 
+                              "cpu", "cpu", "cpu", "cpu")
+stats_df_threeway$sexregion <- paste0(stats_df_threeway$sex, stats_df_threeway$region)
+
+data$sex_region <- paste0(data$sex, data$region)
+
+grob5 <- (# Diet, sex and region
+  stats_df_threeway |> 
+    ggplot(aes(x = sexregion, y = mean, fill =diet)) + 
+    geom_bar(stat = "identity", position=position_dodge(), width = 0.5) +
+    geom_point(data = data, aes(x = sex_region , y = percent_area_adjusted), 
+               position=position_dodge(width = 0.5)) +
+    geom_errorbar(aes(ymin = mean-se, ymax = mean + se, width = 0.1), 
+                  position=position_dodge(.5)) +
+    guides(fill=guide_legend(title="Paternal Diet")) +
+    scale_fill_manual(values = c("#6185B4", "#B461AE"), 
+                      labels = c("Control", "High-Fat")) +
+    scale_y_continuous(expand = expansion(mult = c(0, 0.05))) +
+    xlab("Offspring Sex and Brain Region") + ylab("Mean Microglia Coverage (%)") +
+    scale_x_discrete(labels=c("Female Striatum", "Female Cortex", 
+                              "Male Striatum", "Male Coretex")) + 
+    theme_bw() + 
+    theme(legend.position="bottom")
+)
+ggsave(grob5, filename = 
+         "Output/Graphs/threeway comparison/diet, sex and region.png",
+       width = 8, height = 5.5)
