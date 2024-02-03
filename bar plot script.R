@@ -126,7 +126,7 @@ sex_diet_facet <-
               manual = TRUE)+
   scale_y_continuous(expand = expansion(mult = c(0, 0.08))) +
   guides(fill=guide_legend(title="Offspring Sex")) +
-  scale_fill_manual(values = c("#61B499", "#8E61B4")) + 
+  scale_fill_manual(values = c("#61B499", "#8E61B4"), labels = c("Female", "Male")) + 
   ggtitle("Effect of Paternal Diet on Iba1 Coverage (Grouped by Sex)") +
   xlab("Paternal Diet") + ylab("Mean Iba1 Coverage (%)") +
   scale_x_discrete(labels=c("Control", "High-Fat")) + 
@@ -162,7 +162,7 @@ diet_sex_facet <-
                 manual = TRUE)+
   scale_y_continuous(expand = expansion(mult = c(0, 0.08))) +
   guides(fill=guide_legend(title="Paternal Diet")) +
-  scale_fill_manual(values = c("#6185B4", "#B461AE")) + 
+  scale_fill_manual(values = c("#6185B4", "#B461AE"), labels = c("Control", "High-Fat")) + 
   ggtitle("Effect of Sex on Iba1 Coverage (Grouped by Paternal Diet)") +
   xlab("Offspring Sex") + ylab("Mean Iba1 Coverage (%)") +
   scale_x_discrete(labels=c("Female", "Male")) + 
