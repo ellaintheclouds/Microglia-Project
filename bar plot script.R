@@ -71,7 +71,7 @@ sex_facet <-
   theme(plot.title = element_text(size=12, face="bold", 
                                   margin = margin(10, 0, 10, 0))) + 
   facet_wrap(~ region, labeller = labeller(region = region.labs)) 
-ggsave(diet_facet, filename = "Output/Graphs/oneway comparison/sex facet.png",
+ggsave(sex_facet, filename = "Output/Graphs/oneway comparison/sex facet.png",
        width = 6, height = 4)
 
 region_plot <- # Region
@@ -127,15 +127,17 @@ sex_diet_facet <-
   scale_y_continuous(expand = expansion(mult = c(0, 0.08))) +
   guides(fill=guide_legend(title="Offspring Sex")) +
   scale_fill_manual(values = c("#61B499", "#8E61B4"), labels = c("Female", "Male")) + 
-  ggtitle("Effect of Paternal Diet on Iba1 Coverage (Grouped by Sex)") +
+  ggtitle("Effect of Sex on Iba1 Coverage
+          (Within Paternal Diet Groups)") +
   xlab("Paternal Diet") + ylab("Mean Iba1 Coverage (%)") +
   scale_x_discrete(labels=c("Control", "High-Fat")) + 
   theme_bw() + 
-  theme(plot.title = element_text(size=12, face="bold", 
+  theme(legend.position="bottom", 
+        plot.title = element_text(size=12, face="bold", 
                                   margin = margin(10, 0, 10, 0))) + 
   facet_wrap(~ region, labeller = labeller(region = region.labs)) 
 ggsave(sex_diet_facet, filename = "Output/Graphs/twoway comparison/sex diet facet.png",
-       width = 6, height = 4)
+       width = 5, height = 5)
 
 annotation_df4 <- data.frame(region = c("cpu", "cpu", "ctx", "ctx"),
                              y_position = c(22, 17, 20, 13), 
@@ -163,15 +165,17 @@ diet_sex_facet <-
   scale_y_continuous(expand = expansion(mult = c(0, 0.08))) +
   guides(fill=guide_legend(title="Paternal Diet")) +
   scale_fill_manual(values = c("#6185B4", "#B461AE"), labels = c("Control", "High-Fat")) + 
-  ggtitle("Effect of Sex on Iba1 Coverage (Grouped by Paternal Diet)") +
+  ggtitle("Effect of Paternal Diet on Iba1 Coverage
+          (Within Sex Groups)") +
   xlab("Offspring Sex") + ylab("Mean Iba1 Coverage (%)") +
   scale_x_discrete(labels=c("Female", "Male")) + 
   theme_bw() + 
-  theme(plot.title = element_text(size=12, face="bold", 
+  theme(legend.position="bottom",
+        plot.title = element_text(size=12, face="bold", 
                                   margin = margin(10, 0, 10, 0))) + 
   facet_wrap(~ region, labeller = labeller(region = region.labs)) 
 ggsave(diet_sex_facet, filename = "Output/Graphs/twoway comparison/diet sex facet.png",
-      width = 6, height = 4)
+      width = 5, height = 5)
 
 stats_df_twoway_ <- stats_df[3:6, ]
 stats_df_twoway_$region <- c("ctx", "ctx", "cpu", "cpu")
@@ -256,7 +260,7 @@ grob5 <- # Diet, sex and region
     scale_fill_manual(values = c("#B4B361", "#B46167"), 
                       labels = c("Striatum", "Cortex")) +
     scale_y_continuous(expand = expansion(mult = c(0, 0.07))) +
-    ggtitle("Effect of Region on Iba1 Coverage (Grouped by Sex and Paternal Diet)") +
+    ggtitle("Effect of Region on Iba1 Coverage (Within Sex and Paternal Diet Groups)") +
     xlab("Offspring Sex and Paternal Diet") + ylab("Mean Iba1 Coverage (%)") +
     scale_x_discrete(labels=c("Female Control", "Female High-Fat", 
                              "Male Control", "Male High-Fat")) + 

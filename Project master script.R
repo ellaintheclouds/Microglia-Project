@@ -33,6 +33,3 @@ source("significance script.R")
 # 4 Creating plots -------------------------------------------------------------
 # Plotting
 source("bar plot script.R")
-
-# Arranging plots for publication
-source("plot arrange script.R")
